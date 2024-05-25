@@ -1,0 +1,37 @@
+Backup
+cd /tmp/
+mkdir backup
+
+cd /home/
+
+vi backup.sh
+
+#Dit script maakt een backup van de volgende gegevens in de map /tmp/backup
+
+rsync -av /home/se3a /tmp/backup
+
+chmod +x backup.sh
+
+./backup.sh
+
+
+
+
+
+
+su
+crontab -l bekijken
+crontab -e editen
+ * * * * * /home/backup.sh >> /home/logfiles
+
+minuten 0-59
+uren 0-23
+dag van de maand 1-31
+maand van het jaar 1-12
+dag van de week 0-6 (0 = zondag)
+
+* betekent telkens om die tijd
+
+*/1 * * * * elke minuut
+0 * * * * elk uur
+0 12 * * * 12 uur 's middags
