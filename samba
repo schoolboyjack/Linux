@@ -1,0 +1,59 @@
+Samba
+systemctl status {service}
+history om vorige commandos te laten zien
+zypper search {program}
+
+mount samba e.g:
+> vi /etc/samba/smb.conf
+
+[samba]
+path = /home/SE3A
+writeable = yes
+
+screenshot van login name
+screenshot van map met bestand
+screenshot dat anderen users geen toegang hebben
+
+toegang op map
+setfacl -m g:se3a:r-x Se3a
+setfacl -m u:Jeroen:r-x Se3a
+
+
+
+
+
+
+
+
+Samba server handleiding
+
+Let op! alles configureren met root account
+Machine1 Linux
+1. open konsole
+2. inloggen met root account "su"  enter en daarna wachtwoord van root
+3. cd /home
+4. maak een map aan "mkdir smbjevoornaam"
+5. chgrp users smbjevoornaam
+6. chmod 770 smbjevoornaam "om de rechten van de groep eigenaar te wijzigen
+7. vi /etc/samba/smb.conf
+   helemaal onderaan voeg de volgende regels
+   [smbjevoornaam]
+					path = /home/smbjevoornaam
+					writeable = yes
+					comment = "Het is optioneel"
+	als je klaar bent, druk op ESC daarna :wq!
+8. systemctl start smb.service
+9. systemctl start nmb.service
+10. systemctl stop firewalld.service
+11. smbpasswd -a "gebruikersnaam"                            smbpasswd -a student
+12. ip a "kopieer het ip-adres van Linux machine"
+
+Machine2 Windows client
+
+1. Open Deze PC
+2. Maak een netwerk verbinding
+	path \\ip-adres_van_de_server\smbjevoornaam
+	
+	opniuew verbingin maken... "uitvinken"
+	Verbinding maken met nieuwe referenties "aanvinken"
+3. Het wordt een nieuwe venster geopend met de smb map
