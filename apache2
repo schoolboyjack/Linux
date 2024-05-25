@@ -4,21 +4,21 @@ zypper search apache2
 zypper install apache2
 mkdir /srv/www/vhosts
 cd /srv/www/vhosts/
-mkdir Jeroen.com
-vi jeroen.com/index.html
+mkdir jack.com
+vi jack.com/index.html
 
 cd /etc/apache2/vhosts.d/
-cp vhost.template Jeroen.conf
+cp vhost.template jack.conf
 
-vi Jeroen.conf
-:1,$ s/dummy-host.example.com/Jeroen.com/g
+vi jack.conf
+:1,$ s/dummy-host.example.com/jack.com/g
 
 
 
 ip add show
 vi /etc/hosts
 
-ip address Jeroen.com
+{ip address} jack.com
 systemctl start/restart apache2.service
 
 
