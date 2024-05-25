@@ -1,5 +1,6 @@
 Samba
 systemctl status {service}
+systemctl disable firewalld.service
 history om vorige commandos te laten zien
 zypper search {program}
 
